@@ -9,7 +9,7 @@ const ErrorPage = () => {
       <h2>
         {err.status}-{err.statusText}
       </h2>
-      <p>{err.error.message}</p>
+      {/* <p>{err.error.message}</p> */}
     </div>
   );
 };

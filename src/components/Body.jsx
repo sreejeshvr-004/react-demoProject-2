@@ -1,24 +1,18 @@
-import ProductCards from "./ProductCards";
+import ProductCards, { withPromotedText } from "./ProductCards";
 import { PRODUCT_API_URL } from "../utils/constants";
-import {  useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useDetails from "../utils/hooks/useDetails";
+import AuthContext from "../utils/AuthContext.js";
 
 const Body = () => {
-  const [productList, setProductList] = useState([]);
-  const [filteredList, setFilteredList] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  const productList = useDetails();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    const data = await fetch(PRODUCT_API_URL);
-    const json = await data.json();
-    console.log(json);
-    setProductList(json?.products || []);
-    setFilteredList(json?.products || []);
-  };
+  const [filteredList, setFilteredList] = useState(productList);
+  const [searchText, setSearchText] = useState("");
+  const PromotedProduct = withPromotedText(ProductCards);
+  const { loggedInUserName, setUserName } = useContext(AuthContext);
 
   useEffect(() => {
     if (searchText.trim() === "") {
@@ -66,12 +60,22 @@ const Body = () => {
           >
             Search
           </button>
+          <input
+            className="search-input"
+            type="text"
+            value={loggedInUserName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
       <div className="product-container">
         {filteredList?.map((pdt) => (
           <Link className="pdt-txt" key={pdt.id} to={`/products/${pdt.id}`}>
-            <ProductCards pdt={pdt} />
+            {pdt.rating > 4 ? (
+              <PromotedProduct pdt={pdt} />
+            ) : (
+              <ProductCards pdt={pdt} />
+            )}
           </Link>
         ))}
       </div>

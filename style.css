@@ -1,16 +1,17 @@
 html body {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 .app-layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-content {
-  flex: 1; /* pushes footer to bottom */
+    flex: 1;
+    /* pushes footer to bottom */
 }
 
 
@@ -49,7 +50,7 @@ ul>li {
     font-weight: 500;
 }
 
-.a{ 
+.a {
     color: black;
     text-decoration: none;
     list-style: none;
@@ -91,7 +92,7 @@ ul>li>a:hover {
 }
 
 .pdt-card:hover {
-    transform: translateY(-6px);
+    
     box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
 }
 
@@ -103,7 +104,7 @@ ul>li>a:hover {
     border-radius: 8px;
 }
 
-.pdt-txt{
+.pdt-txt {
     text-decoration: none;
     color: black;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -158,7 +159,7 @@ ul>li>a:hover {
     box-shadow: 0 0 0 3px rgba(249, 134, 47, 0.25);
 }
 
-/* ===== SEARCH BUTTON ===== */
+
 .search-button {
     background-color: #2bb673;
     color: #ffffff;
@@ -177,7 +178,7 @@ ul>li>a:hover {
     transform: scale(1.05);
 }
 
-/* ===== SHIMMER CONTAINER ===== */
+
 .shimmer-container {
     padding: 30px;
     display: flex;
@@ -187,7 +188,7 @@ ul>li>a:hover {
     background-color: #f7f7f7;
 }
 
-/* ===== SHIMMER CARD ===== */
+
 .shimmer-card {
     width: 290px;
     height: 250px;
@@ -200,7 +201,7 @@ ul>li>a:hover {
     animation: shimmer 2s ease infinite;
 }
 
-/* ===== SHIMMER ANIMATION ===== */
+
 @keyframes shimmer {
     0% {
         background-position: 100% 0;
@@ -212,17 +213,43 @@ ul>li>a:hover {
 }
 
 .footer {
-  text-align: center;
-  padding: 15px;
-  background-color: #ffffff;
-  border-top: 1px solid #e0e0e0;
-  font-size: 14px;
-  color: #555;
+    text-align: center;
+    padding: 15px;
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #555;
 }
 
-.student-info{
-    margin:15px;
+.student-info {
+    margin: 15px;
     padding: 10px;
     border: 0.5px solid;
     text-align: justify;
-}     
+}
+
+.promoted {
+    position: absolute;
+    background-color: black;
+    color: white;
+    margin: 4px;
+    padding: 4px;
+    z-index: 2;
+    border-radius: 2px;
+    border-top-left-radius: 6px;
+}
+
+.review-heading {
+    box-shadow: 0 8px 6px -6px black;
+    width: 40%;
+    cursor: pointer;
+    margin: 10px;
+    padding: auto;
+}
+
+.review {
+    border-bottom: 1px solid black;
+    width: 30%;
+    margin: 10px;
+    padding: auto;
+}

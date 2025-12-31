@@ -1,32 +1,45 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/hooks/useOnlineStatus";
+import AuthContext from "../utils/AuthContext";
 
 const Header = () => {
   const [auth, setAuth] = useState("Login");
-  useEffect(() => {
-    console.log("header rendered");
-  }, [auth]);
+  const onlineStatus = useOnlineStatus();
+  const { loggedInUserName } = useContext(AuthContext);
+
   return (
     <div className="header">
       <img className="logo" src={LOGO_URL} />
 
       <div className="nav-bar">
         <ul>
-          <li><Link to={"/"} className="a">Home</Link></li>
-         {/*  <Link to={"/"}>
-            <li>Home</li>
-          </Link> */}
+          <li>Online Status:{onlineStatus ? "🟢" : "🔴"}</li>
 
-          <li><Link to={"/about"} className="a">About</Link></li>
-          {/* <Link to={"/about"}>
-            <li>About</li>
-          </Link> */}
+          <li>
+            <Link to={"/"} className="a">
+              Home
+            </Link>
+          </li>
 
-           <li><Link to={"/contact"} className="a">Contact</Link></li>
-{/*           <Link to={"/contact"}>
-            <li>Contact</li>
-          </Link> */}
+          <li>
+            <Link to={"/about"} className="a">
+              About
+            </Link>
+          </li>
+
+          <li>
+            <Link to={"/contact"} className="a">
+              Contact
+            </Link>
+          </li>
+          <li>
+            <Link to={"/food"} className="a">
+              Food Delivery
+            </Link>
+          </li>
+
           <li>Cart</li>
           <button
             className="login-btn"
@@ -36,6 +49,7 @@ const Header = () => {
           >
             {auth}
           </button>
+          <li>{loggedInUserName}</li>
         </ul>
       </div>
     </div>
